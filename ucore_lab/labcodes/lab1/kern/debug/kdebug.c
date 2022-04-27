@@ -302,5 +302,21 @@ print_stackframe(void) {
       *           NOTICE: the calling funciton's return addr eip  = ss:[ebp+4]
       *                   the calling funciton's ebp = ss:[ebp]
       */
+  uint32_t * ebp = 0; // pointer as well as array
+  uint32_t eip = 0;
+  
+  ebp = (uint32_t *) read_ebp();
+  eip = read_eip();
+ 
+  while(ebp)
+  {
+    cprintf("ebp:0x%08x eip:0x%08x args:", (uint32_t)ebp, eip);
+    cprintf("0x%08x 0x%08x 0x%08x 0x%08x\n", ebp[2],ebp[3],ebp[4],ebp[5]);
+    
+    print_debuginfo(eip-1);
+    
+    eip = ebp[1]; // old EIP
+    
+    ebp = (uint32_t*)ebp[0];
+  }
 }
-
