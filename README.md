@@ -9,3 +9,4 @@
 
 * The disk file containing the whole tools and files (environment configured completely) can be download by the sharing on the baidunetdisk, or you can contact me.
 
+* For related notes and code analysis, see: [ucore_notes](https://github.com/Ganliber/OS/tree/main/thu)
